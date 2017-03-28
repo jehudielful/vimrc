@@ -61,7 +61,13 @@ set wcm=<Tab>
 menu Encoding.windows-1251  :set encoding=cp1251<CR>
 menu Encoding.utf-8         :set encoding=utf8 <CR>
 map <F8> :emenu Encoding.<TAB>
+map <F2> :NERDTreeToggle<CR>
 
+"autopen NERDTree and focus cursor in new document
+autocmd VimEnter * NERDTree
+autocmd VimEnter * wincmd p
+let g:NERDTreeWinPos = "right"
+cd C:/_WWWORK
 "=====================================================
 " General settings
 "=====================================================
@@ -140,3 +146,10 @@ endi
 set encoding=utf-8
 
 autocmd FileType python nnoremap <buffer> <F5> :exec '!python' shellescape(@%, 1)<cr>
+
+" Pathogen
+call pathogen#infect()
+"execute pathogen#infect()
+call pathogen#helptags() " generate helptags for everything in ‘runtimepath’
+syntax on
+filetype plugin indent on
